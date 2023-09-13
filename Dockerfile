@@ -1,10 +1,9 @@
-FROM docker:19.03.8
-
+FROM docker:24.0.6
 LABEL maintainer="RafikFarhad <rafikfarhad@gmail.com>"
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache git curl python bash
+    apk add --no-cache git curl python3 bash
 
 #  Downloading gcloud package
 RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz

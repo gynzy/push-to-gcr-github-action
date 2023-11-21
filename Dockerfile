@@ -5,13 +5,12 @@ RUN apk update && \
     apk upgrade && \
     apk add --no-cache git curl python3 bash
 
-#  Downloading gcloud package
-RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz
-
-# Installing the package
+#  Downloading gcloud package and install
 RUN mkdir -p /usr/local/gcloud \
-  && tar -C /usr/local/gcloud -xvf /tmp/google-cloud-sdk.tar.gz \
-  && /usr/local/gcloud/google-cloud-sdk/install.sh
+  && curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz | tar xvzf - -C  /usr/local/gcloud \
+  && /usr/local/gcloud/google-cloud-sdk/install.sh \
+  && /usr/local/gcloud/google-cloud-sdk/bin/gcloud components remove bq gsutil \
+  && rm -rf /usr/local/gcloud/google-cloud-sdk/.install/.backup
 
 # Adding the package path to local
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin

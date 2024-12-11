@@ -3,7 +3,7 @@ LABEL maintainer="RafikFarhad <rafikfarhad@gmail.com>"
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache git curl python3 bash
+    apk add --no-cache git curl python3 bash openssh-client
 
 #  Downloading gcloud package and install
 RUN mkdir -p /usr/local/gcloud \

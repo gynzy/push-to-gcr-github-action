@@ -1,4 +1,4 @@
-FROM docker:24.0.6
+FROM docker:27.5.1
 LABEL maintainer="RafikFarhad <rafikfarhad@gmail.com>"
 
 RUN apk update && \
